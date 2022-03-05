@@ -33,4 +33,4 @@ async function answer(repo) {
   console.log(answer);
 }
 
-getGithubRepoInfo("node");
+getGithubRepoInfo("Thunderbolt9");
