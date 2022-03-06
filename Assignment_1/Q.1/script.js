@@ -1045,15 +1045,22 @@ const size = [];
 const defender_size = {};
 const output = {};
 
-function mode(array) {
-  if (array.length == 0) return null;
+function getMaxElement(array) {
+  if (array.length == 0) {
+    return null;
+  }
   var modeMap = {};
   var maxEl = array[0],
     maxCount = 1;
   for (var i = 0; i < array.length; i++) {
     var el = array[i];
-    if (modeMap[el] == null) modeMap[el] = 1;
-    else modeMap[el]++;
+
+    if (modeMap[el] == null) {
+      modeMap[el] = 1;
+    } else {
+      modeMap[el]++;
+    }
+
     if (modeMap[el] > maxCount) {
       maxEl = el;
       maxCount = modeMap[el];
@@ -1082,10 +1089,10 @@ battles.map((battle) => {
   }
 });
 
-most_active.attacker_king = mode(attacker_king);
-most_active.defender_king = mode(defender_king);
-most_active.region = mode(region);
-most_active.name = mode(names);
+most_active.attacker_king = getMaxElement(attacker_king);
+most_active.defender_king = getMaxElement(defender_king);
+most_active.region = getMaxElement(region);
+most_active.name = getMaxElement(names);
 const sum = size.reduce((partialSum, a) => partialSum + a, 0);
 defender_size.average = Math.round(sum / size.length);
 defender_size.min = Math.min.apply(Math, size);
